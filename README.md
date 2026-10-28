@@ -56,7 +56,8 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
 - boucles de jeu (10 pts)
 - Coût du tirage et mise à jour du solde (6 pts)
 - Règles de gains (14 pts)
-- Affichage exact des messages et questions à l'utilisateur (10 pts)
+- Affichage exact des messages et questions à l'utilisateur (8 pts)
+- Présences de commentaires explicatifs
 
 ## Vérifications
 - Ne pas oublier d'inscrire votre nom et votre numéro de DA dans l'entête de chaque fichier
