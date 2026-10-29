@@ -19,7 +19,7 @@
 - Ne pas oublier d'inscrire votre nom et votre numéro de DA dans l'entête du fichier
 
 ### Énoncé
-Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs dans un sac
+Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs dans un sac. Maintenant avec tirage bonus!!!
 
 ### Règles
 - Le sac de cube contient 3 cubes bleus, 3 cubes verts et 3 cubes rouges
@@ -28,15 +28,34 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
 - À chaque partie, 3 cubes sont tirés du sac
   - Les cubes sont remis dans le sac entre chaque tirage
     - i.e. La liste de cubes reste toujours la même
-  - vous devez définir une fonction ``effectuer_tirage(sac_cubes: list)`` prenant en paramètre la liste de cubes (i.e. ``sac_cubes``) qui retournera 3 str choisies au hasard dans la liste passée en paramètre.
-    - Vous devez utiliser le module ``random``
+  - Vous devez définir la fonction ``effectuer_tirage(sac_cubes: list) -> tuple[str, str, str]`` prenant en paramètre la liste de cubes (i.e. ``sac_cubes``) qui retournera 3 str choisies au hasard dans la liste passée en paramètre.
+    - Vous devez utiliser la fonction ``random.choice()``
+- Vous devez définir la fonction ``tirage_bonus(gain: int) -> int``
+  - cette fonction permet de calculer les tickets bonus
+  - prend en paramètre le gain
+  - retourne le nombre de ticket bonus
+  - vous devez utiliser ``random.randint()`` pour générer un nombre entre 100 (inclus) et 999 (inclus)
+  - compter le nombre de chiffres pareils
+    - Si il n'y a aucun chiffre pareil, retourner 0 ticket bonus
+    - S'il y a 2 chiffres pareils, retourner la moitié du nombre de tickets gagnés en bonus
+    - S'il y a 3 chiffres pareils, retourner la nombre de tickets gagnés en bonus
+    - ex:
+      - si la personne gagne 4 ticket et obtient ``666``, retournez 4 tickets en bonus
+      - si la personne gagne 4 ticket et obtient ``144``, retournez 2 tickets en bonus
+      - si la personne gagne 4 ticket et obtient ``142``, retournez 0 tickets en bonus
 - Chaque partie coûte 1 ticket pour jouer
   - Le ticket sera déduit de son solde peu importe s'il gagne ou perd
   - Le tirage se fera en faisant appel à la fonction définie ci-dessus
 - Les règles de gains sont les suivantes
-  - Si le joueur obtient 3 cubes bleus, il gagne 10 tickets
-  - Si le joueur obtient au moins 2 cubes rouges, il gagne 5 tickets
-  - Si le joueur obtient 3 cubes verts, il obtient 3 tickets
+  - Si le joueur obtient 3 cubes bleus
+    - il gagne 10 tickets
+    - appeler la fonction ``tirage_bonus()`` (voir plus haut) en passant le gain en paramètre et ajouter les tickets bonus aux gains
+  - Si le joueur obtient au moins 2 cubes rouges
+    - il gagne 6 tickets + tickets bonus
+    - appeler la fonction ``tirage_bonus()`` (voir plus haut) en passant le gain en paramètre et ajouter les tickets bonus aux gains
+  - Si le joueur obtient 3 cubes verts
+    - il obtient 4 tickets
+    - appeler la fonction ``tirage_bonus()`` (voir plus haut) en passant le gain en paramètre et ajouter les tickets bonus aux gains
   - S'il obtient 3 cubes de couleurs différentes, il obtient 1 ticket
   - Dans tous les autres cas, il n'obtient aucun gain
 - Les gains sont ajoutés au solde du joueur
@@ -51,13 +70,13 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
 
 ### Barème
 - création de la liste de cube (6 pts)
-- définition de la fonction (4 pts)
-- Tirage aléatoire (4 pts)
-- boucles de jeu (10 pts)
+- fonction ``effectuer_tirage()`` (8 pts)
+- fonction ``tirage_bonus()`` (10 pts)
+- boucles de jeu (6 pts)
 - Coût du tirage et mise à jour du solde (6 pts)
-- Règles de gains (14 pts)
-- Affichage exact des messages et questions à l'utilisateur (8 pts)
-- Présences de commentaires explicatifs
+- Règles de gains (10 pts)
+- Affichage exact des messages et questions à l'utilisateur (6 pts)
+- Présences de commentaires explicatifs (2 pts)
 
 ## Vérifications
 - Ne pas oublier d'inscrire votre nom et votre numéro de DA dans l'entête de chaque fichier
