@@ -44,15 +44,13 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
   - prend en paramètre le gain
   - retourne le nombre de ticket bonus
   - vous devez utiliser ``random.randint()`` pour générer un nombre entre 100 (inclus) et 999 (inclus)
-  - Affichez le numéro bonus de cette façon: 
-    - ex: ``Numéro bonus: 444``
+  - Afficher le nombre bonus
+      - ex: si le nombre est ``123``
+        - ``Nombre bonus: 123``
   - compter le nombre de chiffres pareils
     - Si il n'y a aucun chiffre pareil, retourner 0 ticket bonus
     - S'il y a 2 chiffres pareils, retourner la moitié du gain en bonus
     - S'il y a 3 chiffres pareils, retourner le gain en bonus
-    - Afficher le nombre bonus
-      - ex: si le nombre est ``123``
-        - ``Nombre bonus: 123``
     - ex:
       - si la personne gagne 4 ticket et obtient ``666``, retournez 4 tickets en bonus
       - si la personne gagne 4 ticket et obtient ``144``, retournez 2 tickets en bonus
