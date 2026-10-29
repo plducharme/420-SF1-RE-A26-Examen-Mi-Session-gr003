@@ -42,19 +42,19 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
 - Vous devez définir la fonction ``tirage_bonus(gain: int) -> int``
   - cette fonction permet de calculer les tickets bonus
   - prend en paramètre le gain
-  - retourne le nombre de ticket bonus
+  - retourne le nombre de tickets bonus
   - vous devez utiliser ``random.randint()`` pour générer un nombre entre 100 (inclus) et 999 (inclus)
   - Afficher le nombre bonus
       - ex: si le nombre est ``123``
         - ``Nombre bonus: 123``
   - compter le nombre de chiffres pareils
-    - Si il n'y a aucun chiffre pareil, retourner 0 ticket bonus
+    - S'il n'y a aucun chiffre pareil, retourner 0 ticket bonus
     - S'il y a 2 chiffres pareils, retourner la moitié du gain en bonus
     - S'il y a 3 chiffres pareils, retourner le gain en bonus
     - ex:
-      - si la personne gagne 4 ticket et obtient ``666``, retournez 4 tickets en bonus
-      - si la personne gagne 4 ticket et obtient ``144``, retournez 2 tickets en bonus
-      - si la personne gagne 4 ticket et obtient ``142``, retournez 0 tickets en bonus
+      - si la personne gagne 4 tickets et obtient ``666``, retournez 4 tickets en bonus
+      - si la personne gagne 4 tickets et obtient ``144``, retournez 2 tickets en bonus
+      - si la personne gagne 4 tickets et obtient ``142``, retournez 0 tickets en bonus
 - Vous devez définir la fonction ``afficher_gains_bonus(gains: int, bonus: int, nouveau_solde: int) -> None``
   - cette méthode prend en paramètre
     - gain: gain du tirage
@@ -62,12 +62,13 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
     - nouveau_solde: le nouveau solde après le tirage
   - Elle affiche le gain, le bonus et le nouveau solde
   - L'affichage doit être sous le format:
-    - ex: si la personne avait 6 tickets, pour un gain de 4 tickets et 2 tickets bonus
-      - ``Gains: 4 Bonus: 2 Nouveau solde: 12``
+    - ex: si la personne avait un solde 8 tickets, pour un gain de 4 tickets et 2 tickets bonus
+      - ``Gains: 4 Bonus: 2 Nouveau solde: 14``
 - Chaque partie coûte 1 ticket pour jouer
   - Le ticket sera déduit de son solde peu importe s'il gagne ou perd
-  - Le tirage se fera en faisant appel à la fonction définie ci-dessus
-- Les règles de gains sont les suivantes
+  - Le ticket est déduit du solde avant d'effectuer le tirage
+  - Le tirage se fera en faisant appel à la fonction ``effectuer_tirage()``
+- Une fois le tirage effectué (les 3 str ont été retournés par la fonction), les règles de gains sont les suivantes:
   - Si le joueur obtient 3 cubes bleus
     - if fait un gain de 10 tickets
     - appeler la fonction ``tirage_bonus()`` en passant le gain en paramètre pour calculer le bonus
@@ -84,7 +85,7 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
     - ajouter les gains et bonus au solde
     - appeler la fonction ``afficher_gains_bonus()`
   - S'il obtient 3 cubes de couleurs différentes
-    - il fait un gain de 2 ticket
+    - il fait un gain de 2 tickets
     - appeler la fonction ``tirage_bonus()`` en passant le gain en paramètre pour calculer le bonus
     - ajouter les gains et bonus au solde
     - appeler la fonction ``afficher_gains_bonus()`
@@ -92,7 +93,7 @@ Vous devez implémenter un jeu de loto qui simule le tirage de cubes de couleurs
     - appeler la fonction ``afficher_gains_bonus()`
 - Tant que le joueur possède des tickets, vous devez lui poser la question suivante:
   - ``"Voulez-vous jouer [o/n]? ``
-    - S'il répond ``o``, on procède à une nouvelle partie
+    - S'il répond ``o``, on procède à un nouveau tirage
     - S'il répond ``n``, on quitte le jeu en lui indiquant son total de gains ou pertes
       - ex: son solde final est de 14, on affiche ``total des gains: 4``
       - ex: son solde final est de 2, on affiche ``total des pertes: 8``
